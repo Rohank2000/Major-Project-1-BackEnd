@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema(
     wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Clothing" }],
     cart: [
       {
-        productId: { type: mongoose.Schema.Type.ObjectId, ref: "Clothing" },
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "Clothing" },
         quantity: { type: Number, default: 1 },
       },
     ],
