@@ -59,7 +59,7 @@ const deleteAddressFromDatabase = async (addressId)=>{
 
 //using Above Mongoose function with Express 'DELETE' Route to Delete address Data from Database
 
-app.delete("/api/addresses", async (req,res)=>{
+app.delete("/api/remove/addresses", async (req,res)=>{
 try {
     const saveDeletedAddressInfo = await deleteAddressFromDatabase(req.body);
     res.status(200).json({message:"Address Deleted SuccessFully", data: { address: saveDeletedAddressInfo }});
@@ -81,7 +81,7 @@ const getAddressDataFromDatabase = async ()=>{
 
 //using Above Mongoose function with Express 'GET' Route to Fetch address Data from the Database 
 
-app.get("/api/addresses", async (req,res)=>{
+app.get("/api/fetch/addresses", async (req,res)=>{
 try {
     const getAddress = await getAddressDataFromDatabase();
     res.status(200).json({message:"Fetched All Addresses From Database Successfully.", data: { address: getAddress }});
@@ -126,7 +126,7 @@ const getClothingDataFromTheDatabase = async ()=>{
 
 //using Above Mongoose function with Express 'GET' Route to Fetch Clothing Data from the Database
 
-app.get("/api/Clothing", async (req,res)=>{
+app.get("/api/fetch/Clothing", async (req,res)=>{
 try {
     const clothingData = await getClothingDataFromTheDatabase();
     res.status(200).json({message:"Fetched All Clothing Data From Database Successfully.", data: { clothing: clothingData }});
