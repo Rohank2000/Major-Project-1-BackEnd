@@ -5,7 +5,7 @@ const ClothingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  ProductName: {
+  productName: {
     type: String,
     required: true,
   },
@@ -13,6 +13,8 @@ const ClothingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, ref:"Category", 
     required: true,
   },
+  sizes:String,
+  description:String,
   rating:{
       type: Number,
       max: 5,
