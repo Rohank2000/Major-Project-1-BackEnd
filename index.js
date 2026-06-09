@@ -406,7 +406,7 @@ const getCartDataFromTheDatabase = async (cartGetInput) => {
 
 app.get("/api/fetch/cart", async (req, res) => {
   try {
-    const cartData = await getCartDataFromTheDatabase(req.body);
+    const cartData = await getCartDataFromTheDatabase(req.query);
     if (!cartData) {
       res.status(404).json({ message: "Cart Data Not Found." });
     } else {
