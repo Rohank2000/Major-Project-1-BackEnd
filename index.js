@@ -298,13 +298,13 @@ app.get("/api/fetch/categories", async (req, res) => {
 //function to Update WishList Data to Database using Mongoose
 
 const updateWishlistDataInDatabase = async (wishListData) => {
-    const { userId, wishlistArray } = wishListData;
-    const updateWishlistData = await userModel.findOneAndUpdate(
-        { userId: userId },
-        { wishlist: wishlistArray },
-        { returnDocument: "after", upsert: true }
-    );
-    return updateWishlistData;
+  const { userId, wishlistArray } = wishListData;
+  const updateWishlistData = await userModel.findOneAndUpdate(
+    { userId: userId },
+    { wishlist: wishlistArray },
+    { returnDocument: "after", upsert: true }
+  );
+  return updateWishlistData;
 };
 
 //using Above Mongoose function with Express 'POST' Route to Update WishList Data to Database
@@ -324,11 +324,11 @@ app.post("/api/wishlist", async (req, res) => {
 //function to Fetch wishlist Data from the Database using Mongoose
 
 const getWishlistDatafromDatabase = async (wishlistGetInput) => {
-    const { userId } = wishlistGetInput;
-    const getWishlistData = await userModel
-        .findOne({ userId: userId })
-        .select("wishlist userId");
-    return getWishlistData;
+  const { userId } = wishlistGetInput;
+  const getWishlistData = await userModel
+    .findOne({ userId: userId })
+    .select("wishlist userId");
+  return getWishlistData;
 };
 
 //using Above Mongoose function with Express 'GET' Route to Fetch wishlist Data from the Database
@@ -337,13 +337,12 @@ app.get("/api/fetch/wishlist", async (req, res) => {
   try {
     const wishlistData = await getWishlistDatafromDatabase(req.query);
     if (!wishlistData) {
-     return res.status(404).json({ message: "Wishlist Data not Found." });
-    } 
-      res.status(200).json({
-        message: "wishlist Data Successfully Fetched from the Database.",
-        data: { wishList: wishlistData },
-      });
-    
+      return res.status(404).json({ message: "Wishlist Data not Found." });
+    }
+    res.status(200).json({
+      message: "wishlist Data Successfully Fetched from the Database.",
+      data: { wishList: wishlistData },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -352,13 +351,13 @@ app.get("/api/fetch/wishlist", async (req, res) => {
 //function to Update Cart Items in Database using Mongoose
 
 const updateCartItemInDatabase = async (cartInput) => {
-    const { userId, cartArray } = cartInput;
-    const updateCartItem = await userModel.findOneAndUpdate(
-        { userId: userId },
-        { cart: cartArray },
-        { returnDocument: "after", upsert: true }
-    );
-    return updateCartItem;
+  const { userId, cartArray } = cartInput;
+  const updateCartItem = await userModel.findOneAndUpdate(
+    { userId: userId },
+    { cart: cartArray },
+    { returnDocument: "after", upsert: true }
+  );
+  return updateCartItem;
 };
 
 //using Above Mongoose function with Express 'POST' Route to Update Cart Items in Database
@@ -377,11 +376,11 @@ app.post("/api/cart", async (req, res) => {
 //function to Fetch Cart Data from the Database using Mongoose
 
 const getCartDataFromTheDatabase = async (cartGetInput) => {
-    const { userId } = cartGetInput;
-    const getCartData = await userModel
-        .findOne({ userId: userId })
-        .select("cart userId");
-    return getCartData;
+  const { userId } = cartGetInput;
+  const getCartData = await userModel
+    .findOne({ userId: userId })
+    .select("cart userId");
+  return getCartData;
 };
 
 //using Above Mongoose function with Express 'GET' Route to Fetch Cart Data from the Database
@@ -391,12 +390,11 @@ app.get("/api/fetch/cart", async (req, res) => {
     const cartData = await getCartDataFromTheDatabase(req.query);
     if (!cartData) {
       return res.status(404).json({ message: "Cart Data Not Found." });
-    } 
-      res.status(200).json({
-        message: "Cart Data Successfully Fetched from the Database.",
-        data: { cart: cartData },
-      });
-    
+    }
+    res.status(200).json({
+      message: "Cart Data Successfully Fetched from the Database.",
+      data: { cart: cartData },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -409,10 +407,11 @@ const createOrderInDatabase = async (Input) => {
     const { userId, cartItems, totalPrice, chosenAddress } = Input;
 
     const newOrder = {
-items: cartItems.map(item => ({ 
-    product: item.productId,           
-    quantity: item.quantity
-  })),      totalAmount: totalPrice,
+      items: cartItems.map((item) => ({
+        productId: item.productId,
+        quantity: item.quantity,
+      })),
+      totalAmount: totalPrice,
       shippingAddress: chosenAddress,
     };
 
@@ -425,7 +424,7 @@ items: cartItems.map(item => ({
 
       { returnDocument: "after" }
     );
-    return createOrder; 
+    return createOrder;
   } catch (error) {
     console.log(
       "Error Occured While Updating Order Section in Database.",
