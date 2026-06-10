@@ -423,11 +423,13 @@ const createOrderInDatabase = async (Input) => {
 
       { returnDocument: "after" }
     );
+    return createOrder; 
   } catch (error) {
     console.log(
       "Error Occured While Updating Order Section in Database.",
       error
     );
+    throw error;
   }
 };
 
