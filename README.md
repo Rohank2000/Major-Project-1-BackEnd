@@ -48,36 +48,49 @@ mongoDB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>
 4. Start the server:
 node index.js
 
-API Reference
-Addresses
-Method	Endpoint	Description
-POST	/api/addresses	Create a new address
-POST	/api/addresses/:addressId	Update an address
-DELETE	/api/remove/addresses	Delete an address
-GET	/api/fetch/addresses	Fetch all addresses
+## API Reference
 
-Clothing
-Method	Endpoint	Description
-POST	/api/Clothing	Add a new clothing product
-GET	/api/fetch/Clothing	Fetch all clothing products
-GET	/api/Clothing/:clothingId	Fetch a single clothing product
+### Addresses
 
-Categories
-Method	Endpoint	Description
-POST	/api/categories	Add a new category
-GET	/api/fetch/categories	Fetch all categories
+| Method | Endpoint                    | Description          |
+|--------|-----------------------------|----------------------|
+| POST   | `/api/addresses`            | Create a new address |
+| POST   | `/api/addresses/:addressId` | Update an address    |
+| DELETE | `/api/remove/addresses`     | Delete an address    |
+| GET    | `/api/fetch/addresses`      | Fetch all addresses  |
 
-Wishlist
-Method	Endpoint	Description
-POST	/api/wishlist	Update a user's wishlist
-GET	/api/fetch/wishlist	Fetch wishlist (?userId=)
+### Clothing
 
-Cart
-Method	Endpoint	Description
-POST	/api/cart	Update a user's cart
-GET	/api/fetch/cart	Fetch cart (?userId=)
+| Method | Endpoint                   | Description                    |
+|--------|----------------------------|--------------------------------|
+| POST   | `/api/Clothing`            | Add a new clothing product     |
+| GET    | `/api/fetch/Clothing`      | Fetch all clothing products    |
+| GET    | `/api/Clothing/:clothingId` | Fetch a single clothing product |
 
-Orders
-Method	Endpoint	Description
-POST	/api/orders	Place an order
-GET	/api/fetch/orders	Fetch all orders
+### Categories
+
+| Method | Endpoint                | Description          |
+|--------|-------------------------|----------------------|
+| POST   | `/api/categories`       | Add a new category   |
+| GET    | `/api/fetch/categories` | Fetch all categories |
+
+### Wishlist
+
+| Method | Endpoint              | Description                   |
+|--------|-----------------------|-------------------------------|
+| POST   | `/api/wishlist`       | Update a user's wishlist      |
+| GET    | `/api/fetch/wishlist` | Fetch wishlist (`?userId=`)   |
+
+### Cart
+
+| Method | Endpoint            | Description                  |
+|--------|---------------------|------------------------------|
+| POST   | `/api/cart`         | Update a user's cart         |
+| GET    | `/api/fetch/cart`   | Fetch cart (`?userId=`)      |
+
+### Orders
+
+| Method | Endpoint             | Description       |
+|--------|----------------------|-------------------|
+| POST   | `/api/orders`        | Place an order    |
+| GET    | `/api/fetch/orders`  | Fetch all orders  |
